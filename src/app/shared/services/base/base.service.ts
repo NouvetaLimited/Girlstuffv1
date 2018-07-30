@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class BaseService {
-  protected baseUrl = 'http://test.nouveta.tech/girlstuff/api/public/api/frontend/';
+  protected baseUrl = 'https://girlstuffapi.ticketsoko.com/api/public/api/frontend/';
   constructor(protected http: Http) {
   }
   protected post(url: string, data: any, append = true): Observable<any> {
