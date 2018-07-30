@@ -22,12 +22,10 @@ export class CheckoutComponent implements OnInit {
     isProcessing = false;
     isGettingEstimate = false;
     sendyDelivery = false;
-    checkoutCard: {
-        cardNumber: string,
-        cardCvc: string,
-        cardExpMonth: string,
-        cardExpYear: string
-    };
+        cardNumber: string;
+        cardCvc: string;
+        cardExpMonth: string;
+        cardExpYear: string;
     items: any;
     total: number;
     shippingCost = 0;
@@ -103,6 +101,21 @@ export class CheckoutComponent implements OnInit {
         const lat = event.geometry.location.lat();
         const lng = event.geometry.location.lng();
         this.deliveryLocation = {lat: lat, lng: lng};
+
+    }
+
+    payWithCard () {
+      window.location.href =  'https://processor.ticketsoko.com/index.php?cardCVV=' + this.cardCvc
+      + '&cardnumber=' + this.cardNumber + '&cardexpiringmonth='
+     + this.cardExpMonth + '&cardexpiringyear=' + this.cardExpYear +
+      '&Amount=' + this.total + '&email=' + this.checkoutEmail + '&name=' + this.checkoutName + '&paymnentMode=' +
+      'card' + '&phoneNumber=' + this.paymentPhone + '&AccountReference=' + 154500 + '&TransactionDesc=' + 28465415214 +
+      '&api_key=' + '01';
+      // console.log(url);
+      // window.location.href = 'http://cardpayments.ticketsoko.com/api/step1.php?cvv=' + this.cardCvc + '&orderNumber=' + 100
+      //  + '&cardno=' + this.cardNumber + '&ccexpmonth='
+      // + this.cardExpMonth + '&ccexpyear=' + this.cardExpYear +
+      //  '&amount=' + this.total + '&email=' + this.checkoutEmail + '&names=' + this.checkoutName;
     }
 
     getShippingEstimate() {

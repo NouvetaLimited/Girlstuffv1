@@ -44,8 +44,8 @@
         <div *ngIf="paymentMethod=='1'">
             <div class="form-group">
                 <label for="inputCheckoutEmail">Card number</label>
-                <input type="text" class="form-control" id="inputCardNumber" placeholder="Card number" disabled="true" 
-                       [(ngModel)]="checkoutCard.cardNumber" [ngModelOptions]="{standalone: true}">
+                <input type="text" class="form-control" id="inputCardNumber" placeholder="Card number"
+                       [(ngModel)]="cardNumber" [ngModelOptions]="{standalone: true}">
             </div>
             <div class="row">
                 <div class="col-md-8 col-sm-12">
@@ -53,7 +53,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-6">
                             <label for="inputMonth">Month</label>
                             <select type="text" class="form-control" id="inputMonth"
-                                    [(ngModel)]="checkoutCard.cardExpMonth" [ngModelOptions]="{standalone: true}" disabled="true">
+                                    [(ngModel)]="cardExpMonth" [ngModelOptions]="{standalone: true}">
                                 <option value="01">JAN</option>
                                 <option value="02">FEB</option>
                                 <option value="03">MAR</option>
@@ -71,7 +71,7 @@
                         <div class="col-md-6 col-sm-6 col-xs-6">
                             <label for="inputYear">Year</label>
                             <select type="text" class="form-control" id="inputYear"
-                                    [(ngModel)]="checkoutCard.cardExpYear" [ngModelOptions]="{standalone: true}" disabled="true">
+                                    [(ngModel)]="cardExpYear" [ngModelOptions]="{standalone: true}">
                                 <option value="2017">2017</option>
                                 <option value="2018">2018</option>
                                 <option value="2019">2019</option>
@@ -87,8 +87,8 @@
                 </div>
                 <div class="col-md-4 col-sm-12">
                     <label for="inputCVC">CVC</label>
-                    <input type="text" class="form-control" maxlength="3" id="inputCVC" placeholder="123" disabled="true " 
-                           [(ngModel)]="checkoutCard.cardCvc" [ngModelOptions]="{standalone: true}">
+                    <input type="text" class="form-control" maxlength="3" id="inputCVC" placeholder="123"
+                           [(ngModel)]="cardCvc" [ngModelOptions]="{standalone: true}">
                 </div>
             </div>
         </div>
@@ -147,9 +147,17 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary" (click)="checkout()" [disabled]="isProcessing">
-            <i class="fa fa-refresh fa-spin" *ngIf="isProcessing"></i>
-            {{ isProcessing?'Processing...': 'Checkout' }}
-        </button>
+        <div *ngIf="paymentMethod=='0'">
+            <button class="btn btn-primary" (click)="checkout()" [disabled]="isProcessing">
+                <i class="fa fa-refresh fa-spin" *ngIf="isProcessing"></i>
+                {{ isProcessing?'Processing...': 'Pay with Mpesa' }}
+            </button>
+
+        </div>
+        <div *ngIf="paymentMethod=='1'">
+            <button class="btn btn-primary" (click)="payWithCard()">
+              pay with card
+            </button>
+        </div>
     </form>
 </div>
