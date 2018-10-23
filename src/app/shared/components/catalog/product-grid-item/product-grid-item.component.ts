@@ -39,6 +39,6 @@ export class ProductGridItemComponent implements OnInit, AfterViewInit {
     }
 
     outOfStock() {
-        return this.product.quantity <= 0 && this.product.options.length == 0;
+        return this.product.quantity <= 0 && this.product.options.length === 0;
     }
 }

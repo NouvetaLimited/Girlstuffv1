@@ -38,7 +38,7 @@ export class CheckoutService extends BaseService {
 
     searchLocation(location: string): Observable<any> {
         return this.get('https://maps.googleapis.com/maps/api/place/autocomplete/json?input=' + location +
-            '&types=geocode&language=en&key=AIzaSyDV5zxg6Oj-mdq_vAM4m9CvcjRMu6e3Q4M');
+            '&types=geocode&language=en&key=AIzaSyCP3gnhsVuPyfm2vynkyPRwhB7Q-rXvRQk');
     }
 
     shippingEstimate(lat: any, long: any, location: string, name: string, email: string, phone: string): Observable<any> {
